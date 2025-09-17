@@ -1,8 +1,13 @@
-alice_in_wonderland = '"Would you tell me, please, which way I ought to go from here?"\n"That depends a good deal on where you want to get to," said the Cat.\n"I don't much care where ——" said Alice.\n"Then it doesn't matter which way you go," said the Cat.\n"—— so long as I get somewhere," Alice added as an explanation.\n"Oh, you're sure to do that," said the Cat, "if you only walk long enough."'
 # task 01 == Розділіть змінну alice_in_wonderland так, щоб вона займала декілька фізичних лінії
 # task 02 == Знайдіть та відобразіть всі символи одинарної лапки (') у тексті
 # task 03 == Виведіть змінну alice_in_wonderland на друк
-
+alice_in_wonderland = "\"Would you tell me, please, which way I ought to go from here?\"\n" \
+"\"That depends a good deal on where you want to get to,\" said the Cat.\n" \
+"\"I don’t much care where ——\" said Alice.\n" \
+"\"Then it doesn’t matter which way you go,\" said the Cat.\n" \
+"\"—— so long as I get somewhere,\" Alice added as an explanation.\n" \
+"\"Oh, you’re sure to do that,\" said the Cat, \"if you only walk long enough.\""
+print(alice_in_wonderland)
 
 """
     # Задачі 04 -10:
@@ -16,7 +21,7 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 моря становить 37 800 км2. Яку площу займають Чорне та Азов-
 ське моря разом?
 """
-
+print(f"Площа Чорного моря становить 436 402 км2, площа Азовського - 37 800 км2. Разом {436402 + 37800}")
 
 # task 05
 """
@@ -25,7 +30,9 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 250 449 товарів. На другому та третьому – 222 950 товарів.
 Знайдіть кількість товарів, що розміщені на кожному складі.
 """
-
+print(f'На першому складі {375291 - 222950} товарів')
+print(f'На другому складі {375291 - ((375291 - 222950)-(375291 - 250449))} товарів')
+print(f'На третьому складі {375291 - 250449} товарів')
 
 # task 06
 """
@@ -34,7 +41,7 @@ alice_in_wonderland = '"Would you tell me, please, which way I ought to go from 
 вати необхідно буде півтора року по 1179 грн/місяць. Обчисліть
 вартість комп’ютера.
 """
-
+print(f'Вартість компʼютера складає {1179 * 18} гривень')
 
 # task 07
 """
@@ -43,7 +50,12 @@ a) 8019 : 8     d) 7248 : 6
 b) 9907 : 9     e) 7128 : 5
 c) 2789 : 5     f) 19224 : 9
 """
-
+print(f'a: {8019 % 8}')
+print(f'b: {9907 % 9}')
+print(f'c: {2789 % 5}')
+print(f'd: {7248 % 6}')
+print(f'e: {7128 % 5}')
+print(f'f: {19224 % 9}')
 
 # task 08
 """
@@ -57,7 +69,7 @@ c) 2789 : 5     f) 19224 : 9
 Торт            1           350 грн
 Вода            3           21 грн
 """
-
+print(f'Необхідна сума = {4*274+2*218+4*35+350+3*21}')
 
 # task 09
 """
@@ -66,7 +78,7 @@ c) 2789 : 5     f) 19224 : 9
 розміщено щонайбільше 8 фото. Скільки сторінок знадобиться
 Ігорю, щоб вклеїти всі фото?
 """
-
+print(f'Необхідна кількість сторінок в альбомі: {232//8}')
 
 # task 10
 """
@@ -79,3 +91,5 @@ c) 2789 : 5     f) 19224 : 9
 равку під час цієї подорожі, кожного разу заправляючи пов-
 ний бак?
 """
+print(f'Для подорожі потрібно {1600//100*9} літрів бензину')
+print(f'На заправку треба заїхати {(1600//100*9)//48} разів')
