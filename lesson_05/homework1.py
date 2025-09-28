@@ -26,3 +26,18 @@ people_records = [
   ('Ethan', 'Anderson', 36, 'Product Manager', 'Phoenix')
 ]
 print(people_records)
+
+#Додайте свій новий запис на початок даного списку.
+people_records.insert(0, ('Kyrylo', 'Nenakhov', 27, 'QA engineer', 'Dnipro'))
+
+#У модифікованому списку обміняйте елементи з індексами 1 і 5 (1<->5). Виведіть результат.
+people_records[1], people_records[5] = people_records[5], people_records[1]
+for item in people_records:
+    print(item)
+
+#Перевірте, чи всі люди в модифікованому списку з індексами 6, 10, 13 мають вік ≥ 30.
+#Виведіть результат перевірки
+indexes = [6,10,13]
+sublist = sorted([people_records[i] for i in indexes], key = lambda x: x[2])
+if sublist[0][2] < 30:
+    print('Не всі мають вік >= 30')
