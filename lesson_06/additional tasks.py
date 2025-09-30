@@ -54,4 +54,4 @@ else:
 # 2 строка це рішення
 my_line = input('Введіть строку: ')
 #тут в самій умові дуже явний натяк на dictionary компріхейшн)
-my_dict = print({char: my_line.count(char) for char in my_line if char.isalpha()})
+print({char: my_line.count(char) for char in my_line if char.isalpha()})
