@@ -35,6 +35,7 @@ for item in my_line:
 for char, count in my_dict.items():
     print(f"'{char}': {count}")
 
+
 # 4:Ви створюєте список в якому може бути None(а може і не бути)
 # Мета: надрукувати "There is no None" у випадку якщо None не зустрічаеться у списку
 # Умови:
