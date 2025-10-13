@@ -1,5 +1,4 @@
 # Створіть клас геометричної фігури "Ромб". Клас повинен мати наступні атрибути:
-#
 # сторона_а (довжина сторони a).
 # кут_а (кут між сторонами a і b).
 # кут_б (суміжний з кутом кут_а).
@@ -14,31 +13,30 @@
 class Diamond():
 
     def __init__(self, diamond_side, angle_a, angle_b):
-        self.diamond_side = None
-        self.angle_a = None
-        self.angle_b = None
 
         self.diamond_side = diamond_side
         self.angle_a = angle_a
         #виклик setattr для angle_b не потрібен, будем рахувати автоматично
 
+    def __str__(self):
+        return f"Створено ромб зі стороною: {self.diamond_side},\nкутом А: {self.angle_a},\nкутом В: {self.angle_b}"
+
     def __setattr__(self, key, value):
-        if key == 'diamond_side':
+        if key == "diamond_side":
             if value <= 0:
-                raise ValueError(f'Помилка: Сторона ромба має бути > 0. Спроба встановити: {value}')
-            self.diamond_side = value
-        elif key == 'angle_a':
-            if not 0 < value < 180:
-                raise ValueError(f'Помилка: Кут А має бути в діапазоні (0, 180) градусів. Спроба встановити: {value}')
-            self.angle_a = value
-            self.angle_b = 180 - value
-        elif key == 'angle_b':
-            if not 0 < value < 180:
-                raise ValueError(f'Помилка: Кут B має бути в діапазоні (0, 180) градусів. Спроба встановити: {value}')
-            self.angle_b = value
-            self.angle_a = 180 - value
+                print(f"Спроба створити ромб з невалідною стороною = {value}")
+            else:
+                super().__setattr__(key, value)
+        elif key == "angle_a":
+            if 180 > value > 0:
+                super().__setattr__('angle_a', value)
+                super().__setattr__('angle_b', 180 - value)
+            else:
+                print(f"Спроба створити ромб з невалідним значенням кута А = {value}")
+        elif key == "angle_b":
+            super().__setattr__(key, value)
         else:
             super().__setattr__(key, value)
 
-    def __str__(self):
-        return (f'Ромб зі стороною {self.diamond_side}, першим кутом {self.angle_a} та другим {self.angle_b}')
+r = Diamond(1, 2, 3)
+print(r)
