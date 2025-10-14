@@ -19,7 +19,8 @@ class Diamond():
         #виклик setattr для angle_b не потрібен, будем рахувати автоматично
 
     def __str__(self):
-        return f"Створено ромб: a = {self.diamond_side}, <А = {self.angle_a}, <В = {self.angle_b}"
+        if not hasattr(self, "diamond_side") or not hasattr(self, "angle_a") or not hasattr(self, "angle_b"):
+            return "Ромб не створено через невалідні дані."
 
     def __setattr__(self, key, value):
         if key == "diamond_side":
@@ -39,6 +40,5 @@ class Diamond():
         else:
             super().__setattr__(key, value)
 
-r = Diamond(1, 2)
-r.angle_b = 181
+r = Diamond(-1, 2)
 print(r)
