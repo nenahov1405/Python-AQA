@@ -12,14 +12,14 @@
 
 class Diamond():
 
-    def __init__(self, diamond_side, angle_a, angle_b):
+    def __init__(self, diamond_side, angle_a):
 
         self.diamond_side = diamond_side
         self.angle_a = angle_a
         #виклик setattr для angle_b не потрібен, будем рахувати автоматично
 
     def __str__(self):
-        return f"Створено ромб зі стороною: {self.diamond_side},\nкутом А: {self.angle_a},\nкутом В: {self.angle_b}"
+        return f"Створено ромб: a = {self.diamond_side}, <А = {self.angle_a}, <В = {self.angle_b}"
 
     def __setattr__(self, key, value):
         if key == "diamond_side":
@@ -30,13 +30,15 @@ class Diamond():
         elif key == "angle_a":
             if 180 > value > 0:
                 super().__setattr__('angle_a', value)
+                #автоматично обчислюємо кут В
                 super().__setattr__('angle_b', 180 - value)
             else:
                 print(f"Спроба створити ромб з невалідним значенням кута А = {value}")
         elif key == "angle_b":
-            super().__setattr__(key, value)
+            print("Заборонено змінювати значення кута В напряму, він обчислюєьться за умовою задачі автоматично")
         else:
             super().__setattr__(key, value)
 
-r = Diamond(1, 2, 3)
+r = Diamond(1, 2)
+r.angle_b = 181
 print(r)
