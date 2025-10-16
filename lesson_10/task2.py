@@ -1,13 +1,5 @@
-# Створіть абстрактний клас "Фігура" з абстрактними методами для отримання площі та периметру.
-# Наслідуйте від нього декілька (> 2) інших фігур, та реалізуйте математично вірні
-# для них методи для площі та периметру.
-# Властивості по типу “довжина сторони” й т.д. повинні бути приватними,
-# та ініціалізуватись через конструктор.
-# Створіть Декілька різних об’єктів фігур, та у циклі порахуйте та виведіть в консоль площу
-# та периметр кожної.
-
 from abc import ABC, abstractmethod
-
+import math
 class Figure(ABC):
     @abstractmethod
     def area(self):
@@ -17,46 +9,52 @@ class Figure(ABC):
     def perimeter(self):
         pass
 
-class Square(Figure):
 
+class Square(Figure):
     def __init__(self, side):
-        self.side = side
+        self.__side = side
 
     def area(self):
-        return self.side * self.side
+        return self.__side ** 2
 
     def perimeter(self):
-        return self.side * 4
+        return self.__side * 4
+
+    def get_side(self):
+        return self.__side
 
 class Rectangle(Figure):
-
     def __init__(self, width, height):
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     def area(self):
-        return self.width * self.height
+        return self.__width * self.__height
 
     def perimeter(self):
-        return (self.width + self.height) * 2
+        return 2 * (self.__width + self.__height)
+
+    def get_sides(self):
+        return self.__width, self.__height
+
 
 class Circle(Figure):
-
     def __init__(self, radius):
-        self.radius = radius
+        self.__radius = radius
 
     def area(self):
-        return self.radius * 3.14 * self.radius * self.radius
+        return math.pi * self.__radius ** 2
 
     def perimeter(self):
-        return 2 * 3.14 * self.radius
+        return 2 * math.pi * self.__radius
 
-s1 = Square(2)
-r1 = Rectangle(4, 5)
-c1 = Circle(3)
-print(s1.area())
-print(r1.area())
-print(c1.area())
-print(s1.perimeter())
-print(r1.perimeter())
-print(c1.perimeter())
+    def get_radius(self):
+        return self.__radius
+
+figures = [Square(2), Rectangle(4, 5), Circle(3)]
+
+for figure in figures:
+    print(f"{figure.__class__.__name__}:")
+    print(f"  Площа = {figure.area():.2f}")
+    print(f"  Периметр = {figure.perimeter():.2f}")
+    print("-" * 20)
