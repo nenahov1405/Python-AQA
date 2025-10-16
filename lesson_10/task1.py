@@ -9,7 +9,7 @@
 
 class Employee:
 
-    def __init__(self, name, salary):
+    def __init__(self, name, salary, **kwargs):
         self.name = name
         self.salary = salary
 
@@ -17,9 +17,9 @@ class Employee:
         print('I am unknown employee')
 
 class Manager(Employee):
-    def __init__(self, name, salary, department):
+    def __init__(self, department, **kwargs):
         self.department = department
-        Employee.__init__(self, name, salary)
+        super().__init__(**kwargs)
 
 
     def __str__(self):
@@ -29,9 +29,9 @@ class Manager(Employee):
         print('I am manager')
 
 class Developer(Employee):
-    def __init__(self, name, salary, programming_language):
+    def __init__(self, programming_language, **kwargs):
         self.programming_language = programming_language
-        Employee.__init__(self, name, salary)
+        super().__init__(**kwargs)
 
     def __str__(self):
         return f'Створено {self.programming_language} розробника {self.name} із зарплатою {self.salary}'
@@ -41,20 +41,18 @@ class Developer(Employee):
 
 class TeamLead(Manager,Developer):
 
-    def __init__(self, name, salary, department, programming_language, team_size):
+    def __init__(self, team_size, **kwargs):
         self.team_size = team_size
-        Manager.__init__(self, name, salary, department)
-        Developer.__init__(self, name, salary, programming_language)
-
+        super().__init__(**kwargs)
 
     def __str__(self):
         return (f'Створено {self.programming_language} ліда {self.name} у відділі {self.department} '
                 f'з командою {self.team_size} осіб та зарплатою {self.salary}')
 
 
-manager1 = Manager("Alex", 20000, "Operations")
-developer1 = Developer("Kris", 15000, "Python")
-team_lead1 = TeamLead("Ivan", 25000, department="Operations", programming_language="Python", team_size=3)
+manager1 = Manager(name="Alex", salary=20000, department="Operations")
+developer1 = Developer(name="Kris", salary=15000, programming_language="Python")
+team_lead1 = TeamLead(name="Ivan", salary=25000, department="Operations", programming_language="Python", team_size=3)
 print(manager1)
 print(developer1)
 print(team_lead1)
