@@ -57,4 +57,4 @@ for figure in figures:
     print(f"{figure.__class__.__name__}:")
     print(f"  Площа = {figure.area():.2f}")
     print(f"  Периметр = {figure.perimeter():.2f}")
-    print("-" * 20)
+    print("-"* 20)
