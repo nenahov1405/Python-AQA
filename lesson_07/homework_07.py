@@ -4,35 +4,26 @@
 Код майже готовий, треба знайти помилки та випраавити\доповнити.
 """
 def multiplication_table(number):
-    # Initialize the appropriate variable
+    """
+    Повертає табличку множення для заданого числа,
+    але лише до добутку <= 25.
+    """
     multiplier = 1
-
-    # Complete the while loop condition.
-    while multiplier <= number:
+    results = []
+    while True:
         result = number * multiplier
-        if  result > 25:
+        if result > 25:
             break
-        print(str(number) + "x" + str(multiplier) + "=" + str(result))
-
-        # Increment the appropriate variable
+        results.append(f"{number}x{multiplier}={result}")
         multiplier += 1
 
-multiplication_table(3)
-# Should print:
-# 3x1=3
-# 3x2=6
-# 3x3=9
-# 3x4=12
-# 3x5=15
-
+    return results
 
 # task 2
 """  Написати функцію, яка обчислює суму двох чисел.
 """
 def summa(a, b):
     return a + b
-
-print(summa(1, 2))
 
 # task 3
 """  Написати функцію, яка розрахує середнє арифметичне списку чисел.
@@ -43,18 +34,12 @@ def average_list_value(lst):
         summ += item
     return summ / len(lst)
 
-test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-print(average_list_value(test_list))
-
 # task 4
 """  Написати функцію, яка приймає рядок та повертає його у зворотному порядку.
 """
 def reverse_string(formal_string):
     reversed_string = formal_string[::-1]
     return reversed_string
-
-simple_test = "Geeksforgeeks"
-print(reverse_string(simple_test))
 
 # task 5
 """  Написати функцію, яка приймає список слів та повертає найдовше слово у списку.
@@ -66,9 +51,6 @@ def max_word_in_list(lst):
             max_word = word
     return max_word
 
-test_list = ["Yan", "Ivan", "Vitaliy", "Svyatoslav"]
-print(max_word_in_list(test_list))
-
 # task 6
 """  Написати функцію, яка приймає два рядки та повертає індекс першого входження другого рядка
 у перший рядок, якщо другий рядок є підрядком першого рядка, та -1, якщо другий рядок
@@ -79,14 +61,6 @@ def find_substring(str1, str2):
         return -1
     else:
         return index
-
-str1 = "Hello, world!"
-str2 = "world"
-print(find_substring(str1, str2)) # поверне 7
-
-str1 = "The quick brown fox jumps over the lazy dog"
-str2 = "cat"
-print(find_substring(str1, str2)) # поверне -1
 
 """  Оберіть будь-які 4 таски з попередніх домашніх робіт та
 перетворіть їх у 4 функції, що отримують значення та повертають результат.
@@ -105,9 +79,6 @@ def extract_lines_from_list(lst):
             lst2.append(item)
     return lst2
 
-print(extract_lines_from_list([1,2,3,4,5])) #expected result -> empty list
-print(extract_lines_from_list([1,'Hi',3,'Positive',5])) #expected result -> ['Hi','Positive']
-
 # task 8 (task 4 from homework 6)
 #Є лист з числами, порахуйте суму усіх ПАРНИХ чисел в цьому листі
 #function returns value of sum of paired numbers
@@ -118,20 +89,12 @@ def sum_of_paired_numbers(lst):
             list_sum += item
     return list_sum
 
-print(sum_of_paired_numbers([1,2,3,4,5,6,7,8,9,10])) #expected result sum = 30
-print(sum_of_paired_numbers([1,3,5,7,9,11])) #expected result sum = 0
-
 # task 9 (task 3 from homework 4)
 """ Зробіть так, щоб у тексті було не більше одного пробілу між словами.
 """
 def remove_extra_spaces(row):
     words = row.split()
     return " ".join(words)
-
-row_with_extra_spaces = "Hi   this  sentance with           extra    spaces "
-cleaned_row = remove_extra_spaces(row_with_extra_spaces)
-print(f'Рядок з пробілами: {row_with_extra_spaces}')
-print(f'Очищений рядок: {cleaned_row}')
 
 # task 10 (Пошук автомобіля по крітеріях з homework 6)
 #Шукає автомобілі, що відповідають критеріям, сортує їх за ціною (за зростанням)
@@ -203,10 +166,61 @@ car_data = {
   'Nissan Titan': ('silver', 2018, 5.6, 'pickup', 35000)
 }
 
-search_criteria = (2017, 1.6, 36000)
-top_cars = find_and_sort_cars(car_data, search_criteria)
-print("--- Топ 5 знайдених автомобілів (за зростанням ціни) ---")
-for name, year, engine, price in top_cars:
-    print(f"Марка: {name:<10} | Рік: {year} | Об'єм: {engine:.1f} | Ціна: {price}")
-if not top_cars:
-    print("Автомобілі, що відповідають усім критеріям, не знайдено.")
+if __name__ == "__main__":
+
+    #task1
+    multiplication_table(3)
+    # Should print:
+    # 3x1=3
+    # 3x2=6
+    # 3x3=9
+    # 3x4=12
+    # 3x5=15
+
+    #task2
+    print(summa(1, 2))
+
+    #task3
+    test_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    print(average_list_value(test_list))
+
+    #task4
+    simple_test = "Geeksforgeeks"
+    print(reverse_string(simple_test))
+
+    #task5
+    test_list = ["Yan", "Ivan", "Vitaliy", "Svyatoslav"]
+    print(max_word_in_list(test_list))
+
+    #task6
+    str1 = "Hello, world!"
+    str2 = "world"
+    print(find_substring(str1, str2))  # поверне 7
+
+    #task 7
+    str1 = "The quick brown fox jumps over the lazy dog"
+    str2 = "cat"
+    print(find_substring(str1, str2))  # поверне -1
+
+    #task 8
+    print(extract_lines_from_list([1, 2, 3, 4, 5]))  # expected result -> empty list
+    print(extract_lines_from_list([1, 'Hi', 3, 'Positive', 5]))  # expected result -> ['Hi','Positive']
+
+    #task 9
+    print(sum_of_paired_numbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))  # expected result sum = 30
+    print(sum_of_paired_numbers([1, 3, 5, 7, 9, 11]))  # expected result sum = 0
+
+    #task 10
+    row_with_extra_spaces = "Hi   this  sentance with           extra    spaces "
+    cleaned_row = remove_extra_spaces(row_with_extra_spaces)
+    print(f'Рядок з пробілами: {row_with_extra_spaces}')
+    print(f'Очищений рядок: {cleaned_row}')
+
+    #car searching and filtering
+    search_criteria = (2017, 1.6, 36000)
+    top_cars = find_and_sort_cars(car_data, search_criteria)
+    print("--- Топ 5 знайдених автомобілів (за зростанням ціни) ---")
+    for name, year, engine, price in top_cars:
+        print(f"Марка: {name:<10} | Рік: {year} | Об'єм: {engine:.1f} | Ціна: {price}")
+    if not top_cars:
+        print("Автомобілі, що відповідають усім критеріям, не знайдено.")
