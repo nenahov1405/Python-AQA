@@ -1,15 +1,17 @@
 import directions
 import json
+import logging
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def open_and_validate_json(filepath):
     try:
         with open(filepath) as file:
             return json.load(file)
     except FileNotFoundError:
-        print(f'Помилка! Файл не знайдено за шляхом {filepath}')
+        logging.error(f'Файл не знайдено за шляхом: {filepath}')
         return None
     except json.JSONDecodeError as e:
-        print(f'Помилка розрору JSON-файлу: {filepath} Деталі: {e}')
+        logging.error(f'Помилка розбору JSON-файлу: {filepath}. Деталі: {e}')
         return None
 
 
