@@ -39,4 +39,3 @@ def download_photos(resourse):
 refs = get_links_from_url("https://images-api.nasa.gov/search?q=mars&media_type=image")
 rnd_refs = random_items_from_list(refs)
 download_photos(rnd_refs)
-
